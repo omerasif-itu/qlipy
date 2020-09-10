@@ -23,7 +23,7 @@ def get_buffer_size(nframes, ratio):
     return int(nframes * ratio)
 
 
-#  Generate video file from raw audios and images
+#  Generate video file from audios and images
 def generate_video(image_file, audio_file):
     global out_video_file
     out_video_file_name = (audio_file.split('.'))[0]
@@ -34,9 +34,9 @@ def generate_video(image_file, audio_file):
     audio_file = absolutePath + "/audios/" + audio_file
     # audio_file = "audio.mpeg"
 
-    # read raw audio file
+    # read audio file
     audio = AudioFileClip(audio_file, nbytes=2, fps=44100)
-    # Set Duration of audio to raw image
+    # Set Duration of audio to image
     image = ImageClip(image_file).set_duration(audio.duration)
 
     # Optional: Write Mp3
@@ -44,7 +44,7 @@ def generate_video(image_file, audio_file):
                           bitrate="192k",
                           nbytes=2,
                           buffersize=1000)  # fix issue for audio glitches.
-    # set audio to raw image
+    # set audio to image
     video = image.set_audio(audio)
     # append to list for concatenation
     videos.append(video)
@@ -58,7 +58,7 @@ print("Total Audio Files: " + str(len(audio_list)))
 print(images_list)
 print(audio_list)
 
-# generate video from raw audio and images
+# generate video from audio and images
 for i in range(len(audio_list)):
     generate_video(images_list[i], audio_list[i])
 
