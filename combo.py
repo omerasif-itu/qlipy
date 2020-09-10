@@ -15,7 +15,8 @@ from moviepy.editor import *
 # absolute path of current directory
 absolutePath = str(pathlib.Path().absolute())
 videos = []  # clips list
-out_video_file = ""  # out video file path
+FINAL_OUT_VID = "videos/final.mp4"  # out video file path
+MP3_FILE_NAME = ""
 
 
 # Get Dynamic Buffer size based on number of frames
@@ -25,9 +26,9 @@ def get_buffer_size(nframes, ratio):
 
 #  Generate video file from audios and images
 def generate_video(image_file, audio_file):
-    global out_video_file
-    out_video_file_name = (audio_file.split('.'))[0]
-    out_video_file = absolutePath + "/videos/" + out_video_file_name + ".mp4"
+    global MP3_FILE_NAME
+    MP3_FILE_NAME = (audio_file.split('.'))[0]
+    # out_video_file = absolutePath + "/videos/" + out_file_name + ".mp4"
     # outfile = "final.mp4"
     image_file = absolutePath + "/images/" + image_file
     # image_file = "image.jpeg"
@@ -40,7 +41,7 @@ def generate_video(image_file, audio_file):
     image = ImageClip(image_file).set_duration(audio.duration)
 
     # Optional: Write Mp3
-    audio.write_audiofile("mp3/" + out_video_file_name + ".mp3",
+    audio.write_audiofile("mp3/" + MP3_FILE_NAME + ".mp3",
                           bitrate="192k",
                           nbytes=2,
                           buffersize=1000)  # fix issue for audio glitches.
@@ -68,7 +69,7 @@ com_vid = concatenate_videoclips(videos)
 # write final video to file
 # Note: Buffer size is static.
 # 1000 is used to fix audio glitches at the end of the clips.
-com_vid.write_videofile(out_video_file,
+com_vid.write_videofile(FINAL_OUT_VID,
                         fps=1,
                         audio_bitrate='192k',
                         audio_fps=44100,
