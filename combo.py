@@ -43,8 +43,8 @@ def generate_video(image_file, audio_file):
     # Optional: Write Mp3
     audio.write_audiofile("mp3/" + MP3_FILE_NAME + ".mp3",
                           bitrate="192k",
-                          nbytes=2,
-                          buffersize=1000)  # fix issue for audio glitches.
+                          nbytes=2)
+
     # set audio to image
     video = image.set_audio(audio)
     # append to list for concatenation
@@ -74,5 +74,4 @@ com_vid.write_videofile(FINAL_OUT_VID,
                         audio_bitrate='192k',
                         audio_fps=44100,
                         audio_nbytes=2,
-                        audio_codec="aac",
-                        audio_bufsize=1000)  # fix issue for audio glitches.
+                        audio_codec="aac")

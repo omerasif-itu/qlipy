@@ -10,7 +10,7 @@ imageio-ffmpeg==0.4.2
 joblib==0.16.0
 librosa==0.8.0
 llvmlite==0.34.0
-moviepy==1.0.3
+moviepy==2.0.0.dev1
 numba==0.51.2
 numpy==1.19.1
 packaging==20.4
