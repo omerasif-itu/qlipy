@@ -6,7 +6,7 @@ from moviepy.editor import *
 # ------------------------------
 # directory structure should be:
 # --- combine/
-# ----- combo.py
+# ----- GenerateClip.py
 # ----- videos/
 # ----- audios/
 # ----- images/
