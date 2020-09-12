@@ -5,7 +5,7 @@ from moviepy.editor import *
 
 # ------------------------------
 # directory structure should be:
-# --- combine/
+# --- qlipy/
 # ----- GenerateClip.py
 # ----- videos/
 # ----- audios/
