@@ -1,29 +1,12 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+## Setup ##
 
-### What is this repository for? ###
+After setup up a sperate environment run 
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+`pip install -r requirements.txt`
 
-### How do I get set up? ###
+## Steps: ##
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+Add audios and images to `audio/` and `images/` folders
+Run `GenerateClip.py` to create individual ayah clips and one single clip containing all ayah’s.
