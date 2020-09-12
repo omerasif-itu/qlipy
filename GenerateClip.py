@@ -11,6 +11,7 @@ from moviepy.editor import *
 # ----- audios/
 # ----- images/
 # ----- mp3/
+# ----- ayah_videos/
 # ------------------------------
 # absolute path of current directory
 absolutePath = str(pathlib.Path().absolute())
