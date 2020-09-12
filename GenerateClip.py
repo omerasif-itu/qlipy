@@ -16,7 +16,8 @@ from moviepy.editor import *
 absolutePath = str(pathlib.Path().absolute())
 videos = []  # clips list
 FINAL_OUT_VID = "videos/final.mp4"  # out video file path
-MP3_FILE_NAME = ""
+AYAH_FILE_NAME = ""
+MP4 = ".mp4"
 
 
 # Get Dynamic Buffer size based on number of frames
@@ -26,14 +27,16 @@ def get_buffer_size(nframes, ratio):
 
 #  Generate video file from audios and images
 def generate_video(image_file, audio_file):
-    global MP3_FILE_NAME
-    MP3_FILE_NAME = (audio_file.split('.'))[0]
+    global AYAH_FILE_NAME
+    AYAH_FILE_NAME = (audio_file.split('.'))[0]
+    AYAH_FILE_NAME = AYAH_FILE_NAME + MP4
     # out_video_file = absolutePath + "/videos/" + out_file_name + ".mp4"
     # outfile = "final.mp4"
     image_file = absolutePath + "/images/" + image_file
     # image_file = "image.jpeg"
     audio_file = absolutePath + "/audios/" + audio_file
     # audio_file = "audio.mpeg"
+    AYAH_FILE_NAME = absolutePath + "/ayah_videos/" + AYAH_FILE_NAME
 
     # read audio file
     audio = AudioFileClip(audio_file, nbytes=2, fps=44100)
@@ -41,14 +44,22 @@ def generate_video(image_file, audio_file):
     image = ImageClip(image_file).set_duration(audio.duration)
 
     # Optional: Write Mp3
-    audio.write_audiofile("mp3/" + MP3_FILE_NAME + ".mp3",
-                          bitrate="192k",
-                          nbytes=2)
+    # audio.write_audiofile("mp3/" + AYAH_FILE_NAME + ".mp3",
+    #                       bitrate="192k",
+    #                       nbytes=2)
 
     # set audio to image
     video = image.set_audio(audio)
     # append to list for concatenation
     videos.append(video)
+
+    # write single ayah video to file
+    video.write_videofile(AYAH_FILE_NAME,
+                          fps=1,
+                          audio_bitrate='192k',
+                          audio_fps=44100,
+                          audio_nbytes=2,
+                          audio_codec="aac")
 
 
 # main run
